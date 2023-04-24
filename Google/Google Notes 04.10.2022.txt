@@ -1,0 +1,1134 @@
+Managed Compute Services:
+=========================
+GCE -  for VM Provisiong (Google Compute Engine)
+Pre-emptible VMs  	- Short lived VMs
+Sole tenant Nodes	- Dedicated physical servers
+VMWare engine		- runs VMware workloads in GCP
+Managed Instance Gropus - Create multiple compute engines
+Cloud Load Balancing    - Balance Load to multiple instances of app or service
+App Engine		- PaaS Deploy web apps and RESTful APIs quickly
+Cloud Run		- Run isolated containers wo orchestration (serverless)
+GKE			- Managed K8S service
+Cloud Functions		- Serverless compute for event-driven apps
+Anthos			- Managed K8S Cluster sin multi-cloud and on-premises
+Firebase		- Googles Mobile platform, Build apps for iOS, Android and the web, C++ and Unity
+
+Storage:
+========
+Persistent Disk		- Block Storage for your VMs
+Local SSD		- Local ephermeral block storage for your VMs
+Cloud FileStore		- File shares in the cloud
+Cloud Storage		- Object Storage in the cloud
+
+
+Databases - Managed Services
+============================
+Cloud SQL		- Regional Relational OLTP (MySQL, PostgreSQL, SQL server)
+Cloud Spanner		- Global Relational OLTP wiht 99.9999% avaialb for global w horizontal scaling
+Cloud Firestore (DataStore)-Schema-less  NO SQL serverless transactional document DB supporting mobile and web apps 0- few TBs)
+Cloud BigTable		- Large DBs (10TB - PBs);  Supports streaming (IOT), analytical & operational workloads. NOT SERVERLESS
+Cloud MemoryStore	- In memory cache .  Applications needing microsecond responses
+
+Streams, Analytics, Big Data & ... - Managed Services
+======================================================
+Cloud Pub/Sub		- Realtime Messaging in the cloud  (SQS/SNS/ActiveMQ)
+BigQuery		- Relational OLAP db, datawarehouseing & BigData workloads
+BigQuery ML		- Simplified ML using data in BigQuery
+Cloud Dataflow		- Serverless Stream and Batch processing using Apache Beam (openSource)
+Cloud DataProc		- Managed Service for Spark and Hadoop.  NOT SERVERLESS (needs cluster management)
+Cloud Data Fusion	- Visually manage your data pipelines
+Data Studio		- Visualize Data
+Looker			- Enterprise Business Intelligence
+
+
+Migration - Managed Services
+=============================
+Database Migration Service	- Migrate to Cloud SQL
+Storage Transfer Service	- Online Transfer to Cloud Storage (xfer to Se
+Transfer Appliance		- Physical trasnfer using an appliance (Snowcone)
+Migrate for Compute Engine	- Migrate VM an VM storage to GCE from VMware, Azure, EC2
+Migrate for Anthos		- Migrate VMs to GKE containers
+BigQuery Data Transfer Service	- Migrate your analytics data
+
+
+
+TCO - Total Cost Ownership
+
+Consumption vs Fixed-price
+   Consumption - Cloud Functions or Serverless
+   Fixed-price - VMs or GKEs
+
+Capex vs OPex
+
+Cost Factors
+   Resource Type and Configuration
+   Usage Meters - time running and egress, invocations
+   Region
+   Data Transfer
+   Reserved or Not
+
+Price Calculator - Estimates for 40+ services
+ 
+Cost Mgmt
+	Reports
+		Billing Account Overview
+		Payment Overview
+		Cost Mgmt Report - Ytd or by Project (10000ft overview of usage costs)
+	Cost Table - Detailed View, dynamically filter, sort and group various line items
+	Cost Breakdown - Base usage costs, credits, adjustments and taxes
+	Commitments - manage and analyze committed use discounts, enable commited use discount sharing across projects
+	Commitment analysis
+	Budgets & Alerts  Set budgets and get alerted by email or Pub/Sub
+	Billing Report ->BigQuery Export - sends billign data to a BigQuery data set
+			->Custom Dashboards
+		Documents ->
+		Transactions
+	Payment Settings
+	Payment Method
+	Account Mgmt-manage projects linmked to this billing account
+
+
+Best Practices:
+	Group Resources
+	Regular Cost Reviews
+	Estimating before you deploy (Pricing Calc)
+	use Cost Mgmt Features - Cost Table reports, budgets, and cost alerts
+	Stop Resources when you don't need them
+	Use Managed SErvices (PaaS >>>>> IaaS)
+	REserve VMs for 1 to 3 years (committed use discounts)
+
+CHAPTER 14:   DIGITAL TRANSFORMATION
+FOUR THEMES:	LEARN ->  LEAD -> SCALE -> SECURE
+THREE PHASES:   TACTICAL  - MOVE TO CLOUD WITH MIMINIMUM CHANGES  (PRIMARILY IAAS)
+		STRATEGIC - SOME DEGREE OF CHANGE (ISOLATED PART OF AN ENTERPRISE)
+		TRANSFORMATIONAL- FULLY INVESTED IN CLOUD
+
+
+INFRASTRUCTURE MODERNIZATION
+	LIFT AND SHIFT - MOVE AS
+		Virtual Desktop solutions
+		Backup and diaster recovery
+		VMware as a service - Google Cloud VMware Engine
+		Bare Metal Solution - for SAP HANA and Oracle 
+		Migrate for Compute Engine:  MigrateVms and VM storage for GCE
+
+
+APPLICATION MODERNIZATION
+	Migrate to PaaS or Serverless offerings
+		Containerization	
+		Container Orchestration (GKE, Anthos)
+			apps from VMs to containers
+		Make use of cloud databases and data warehouses
+	Use DevOps and SRE Practices (Cloud Build, Cloud Monitoring, ...)
+		Move fast by reducing Cost of Failure
+	Manged service simplify app maint and lifecycle
+	Additional innovation :  BigQuery ML:  Crate and execute ML models directly using standard SQL queries
+
+
+BUSINESS PLATFORM MODERNIZATION
+	CLOUD APPLICATIONS --> API Mgmt -->  Legacy Application
+	
+	Build API around legacy code to simplify integration
+	Managed Services:  Apigee API Mgmt, Cloud Endpoints
+
+CHAPTER 13 - LOOSE COUPLING WITH PUB/SUB
+PUB/SUB used in Microservice Architecture
+		IOT Architectures
+		Streaming Architectures
+
+CLOUD DATAPROC
+	MANAGED SPARK AND HADOOP service - supports variety Spark, PySpark, SparkR, Hive, SparkSQL, Pig, Hadoop
+					 - Perform complex batch processing
+	MULTIPLE Cluster Modes
+		Single/Standard/HA (3 masters)
+		Regular/Preemptible VMs
+	USE CASE:  Move Hadoop and Spark clusters to cloud to perform ML and AI dev using opensource framework
+	(ALT) BigQuery - When you run SQL queries on Petabytes for just queries
+	(ALT) Dataflow - Simple pipelines wo Managing clusters
+
+
+ARCHITECURE 1:  BIG DATA FLOW - BATCH INGEST
+	ETL to load data into BigQuery
+	Dataprep:  Intelligent data service for visually exploring, cleaning and prepping data for analysis, reporting and ML
+	Dataflow:  Create data pipelines (and ETLs)
+	Dataproc:  Complex processing using Spark and Hadoop
+
+
+	Data Studio - Visualize data in BigQuery
+	Looker 	    - Enterpreise Business Intelligence
+
+ARCHITECTURE 2 - STREAMING DATA
+	Pub/Sub:  receive messages
+	Dataflow:  Analyze aggregate and filter data
+	BigTable: Predeinfed time series analytics, using Bigtable gives ability to perform rapid analysis
+	BigQuery: Ad hoc complex analysis - prefer BigQuery
+
+ARHCITECTURE 3:  IOT
+	IOT Core:  Manage (regiwter, authenticate, authorization) devices
+	Pub/Sub:  Durable messge ingestion service (allows buffering)
+	Dataflow:  processing data (ETL & More)
+	Data Storage and Analytics
+		DataStore => make IOT data avail to mobile or web apps
+		BigTable =>Execute pre-defined time series queries
+		BigQuery => ad hoc analytics/analysis
+
+
+DATA LAKE - SIMPLIFIED BIG DATA SOLUTIONS
+	Single platform with combinatoin of solutions or data storage, data mgmt and data analytics
+
+GCP DATA LKES - STORAGE AND INGESTION
+	STORAGE - CLOUD STORAGE
+	DATA INGESTION - 
+		Streaming data - Cloud Pub/Sub + Cloud Dataflow
+		Batch - Transfer Service + Transfer Appliance + gsutil
+	PROCESSING AND ANALYTICS:
+		Run inplace querying using SQL using BigQuery or (Hive on Dataproc)
+	DATA MINING AND EXPLORATION
+		Clean and transform raw data with DATAPREP
+		Use Cloud Datalab (data science libraries such as TensorFlow and NumPy) for exloring
+
+			
+REST API CHALLENGES:
+	Built around REST API
+	GET PUT POST DELETE
+	SET LIMITS - rate limiting, quotas for API consumers
+	Implementing multiple versions
+	Monitoring/Caching and other features
+
+EXPLORING API MANAGEMENT IN GOOGLE CLOUD
+	APIGEE API MGMT - Comprehensive API Mgmt platform
+	CLOUD ENDPOINTS - Basic API Mgmt for Google Cloud Backends
+	API Gateway - newer, Simpler PI Mgmt or Google Cloud backends
+
+
+ARTIFICIAL INTELLIGENCE
+	Strong AI or general AI = intelligence of human
+	Narrow AI (or weak AI) = Focuses on specific tasks like self-driving cars or virtual assistants
+
+MACHINE LEARNING - 10000 FEET OVERVIEW	
+	Traditional Programming - based on rules
+	Machine Learning - Learning from examp;les (NOT Rules)
+		give millions of examples, create a model, use model to make predictions
+	Challenges:
+		No examples, availibility of skilled personnel, complexity in implmementing MLOps
+
+ML IN GOOGLE CLOUD - PRE-TRAINED MODELS
+	Speech-To-Text API
+	Text-To-Speech API
+	Translation API - translate texts into more than one hundred languages
+	Natural Language API - derive insights for unstructured text
+	Cloud Vision API: generic use cases
+			identify if there is a cloud in the picture
+			classify images into predefined categories
+			detect objects and faces
+			read printed words
+
+ML IN GOOGLE CLOUD - CUSTOMER MODELS
+1. Simply building of custom models
+	AutoML - Custom Models
+		AutoML Vision:  Custom models based on Images
+		AutoML Video Intelligence: Add labels to video, video streaming analysis
+		AutoML Tables:  build models on structured data
+2. Data Scientist build complex models
+	FRAMEWORKS:  Tensorflow, Pytorch, scikit-learn
+3. BigQuery ML:  build ML models using Queries
+	use data from BigQuery Datasets (no exports needed)
+Vertex AI
+	Customer tool within unified AI Platform
+	Makes MLOps easy
+
+FASTER ML IN GOOGLE CLOUD TPUs (Tensor Processing Units)
+	Fine-tuned for runing ML Workloads
+	20-30x faster than traditional
+	quickly iterate on ML solutions
+	Supported in GCE, GKE and AI Platform
+	AI PLATFORM DEEP LEARNING VM IMAGE available
+
+
+CHALLENGES IN BUILDING AI SOLUTIONS
+	Importance of DAtASETs - Bias)	even obtaining data
+	Evolving Field - system causes errors, scarcity of skills
+	ML Lifecycle (MLOps)
+	Security
+	Explainability of Model
+	Consequences of AI driven decisions
+
+RESPONSIBLE AI PRINCIPLES
+1. Fairness
+2. Reliability and safety - work under high loads, unexpected situations
+3. Privacy and Security
+4. Inclusiveness
+5. Transparency - explainability, debugability
+6. Accountability - meets ethical and legal standards
+
+ML SCENARIOS:
+Translate from one spoken lang to another	Prebuilt Model - Translation API
+Convert Speech to Text				Prebuilt Model -  Speech-to-Text API
+Generic ID of objects in an image		Prebuild Model - Cloud Vision API
+Identify type of cloud or machine part based
+		on Image			AutoML Vision
+Simply implementation of MLOps			Vertix AI
+
+
+----
+FIREBASE - mobile platform build Apps for iOS, Android, web, C++, and unity
+	Serverless App Logic - Cloud Functions
+	Fully managed backend - FireStore
+	Simplified Auth and SignIn
+	Simplified Monitoring and Analytics
+	Cloud Messaging (Pub Sub send recieve message)
+	Cloud Storage - store generated content)
+	Simplifies PM:  Integrate with Slack JIRA etc..
+
+-----
+EXPLORING CONTAINER REGISTRY AND ARTIFACT REGISTRY
+Container Registry - uses GCS bucket to store images
+		  (Alt Docker Hub)
+		  permissions managed by managing access ot GCS Buckets
+Artifact Registry:   Evolution of Container Register
+	Manages both images and non-container artifacts
+	Container images, language packages, OS packages supported
+	support multiple artifact format
+	DOES NOT use GCS Buckets
+	Regional or Multi-regional
+	(RECOMMEND) Artifact Registry Reader
+		    Artifact Registry Writer
+		    Artifact REgistry Administrator
+
+-------
+APPLICATION MODERNATION
+	Prefer Managed Services	
+	Prefer Containers and Container Orchestration
+	Prefer Stateless, Horizontally Scalable Microservices
+	Use Automation (DevOps, SRE - CI/CD)
+	Step by Step:  Replace app features with appropriate microservices in phase
+
+--------
+GOOGLE CLOUD SECURITY OFFERINGS
+	KMS	Key Management Services
+		Key Rings
+		Key INventory
+	Secret Manager
+	Cloud Data Loss Prevention:  discover, classify, and mask sensitive data (SSN, passwords etc..)
+	Cloud Armor - protects production apps run time from DOS and Common Web Attacks
+			like OWAST Top 10 like XSS (cross-stie scription) and SQL Injection
+	Web Security Scanner - identifies vulnerabilities by running security tests
+	Binary Authoriztion - ensures on trusted container images are deployed ( container Scanner)
+	Container Trheat Detection - detects container runtime attacks
+	Security Command Center - provides intelligent risk dashbaord and analytics system
+
+
+
+CHAPTER 12
+===========
+Synchronous to logging service
+Asynchronous Communication - Decoupled
+
+
+PUB/SUB - reliable scalable fully managed asynch messaging service
+	Highly Avail and Highly Scalable 
+		Auto scale to process billions of messages per day
+		Low cost (Pay for use)	
+	Usecases: Event ingestion and delivery for streaming analystics pipeline
+	Supports push and pull message deliveries
+
+Publisher - sender of message
+Subscriber- Receiver of message
+Very flexible:  One to Many, Many to one, Many to Many
+
+
+PUB/SUB GETTING READY WITH TOPIC AND SUBSCRIPTIONS
+STEP 1	Topic is created
+STEP 2	Subscriptions are created
+		Registered to topic
+		Each subscription represents discrete pull of messages from a topic	
+			multiple clients pull same subscription==>message split bt clients
+			multiple clients create a subscription each==>ech client will get every message
+
+PUB/SUB - SENDING AND RECIEVING A MESSAGE
+Publisher send message to a Topic
+Message individually delivered to each and every subscription
+	Push  pub/sub sends message to subscriber
+	Pull   subscribers poll for messages
+Subscriber send Acks
+Messages removed fom subscriptions message queue
+
+-----------------------
+
+PUB/SUB Lite API - zonal storage messaging service costing fraction of Pub/Sub meant for high vol streams
+Optimized for cost
+
+-----------------------
+
+CLOUD DATAFLOW
+==============   create from template
+CLOUD DATAFLOW
+  Pub/sub>Dataflow>Bigquery (Streaming)
+  Pub/Sub>Dataflow>Cloudspanner/DataStore/BigQuery (Batch - Load data into DBs)
+  Bulk compress files in Cloud Storage (Batch)
+  Convert file format between Avro, Parquet & csv (Batch)
+STREAMING AND BATCH USECASES
+  Realtime fraud detect, sensor data processing, log data processing, batch procesing (Load data, convert frmats etc)
+USE PRE-BUILT TEMPLATES
+BASED ON APACHE BEAM (support Java, Python and Go...)
+SERVERLESS (and Autoscaling)
+
+
+SECTION 11
+==============
+DEVOPS - CI, CD
+
+CONTINUOUS INTEGRATION - continuously run tests and packaging
+CONTINUOUS DEPLOYMENT  - continously deploy to test environments
+CONTINUOUS DELIVERY    - continuous deploy to production
+
+DEVOPS - CI CD - RECOMMENDED THINGS TO DO:
+Static Code Analsysis - Lint, Sonar, Static Security Checks (source code security analyzer like Veracode or Staic Code analyaer
+Runtime Checks - Run Vulnerability Scanners (automated tools that scan web apps for security vulnerability)
+TESTING - Unit Test (JUnit, pytest, Jasmine etc..)
+          Integration Tests (Selenium, Robot Framework Cucumber etc)
+	  System Test (Selenium, Robot Framework, Cucumber etc..)
+	  Sanity and Regression Tests
+
+
+DEVOPS - CI, CD TOOLS
+===========================
+Cloud source Repos:  similar to Git
+Container Registry:  Store your Docker images
+Jenkins:  continous Integratoin
+Cloud Build:  Build deployable artifacts (jars or docker images) from source code and config
+Spinnaker: Multi-cloud continous delivery platform
+	Release SW changes with velocity and confidence
+	Supports deployments ot GCE, GKE, Google App Engine other cloud platforms
+	Supports multiple Deployment Strategies
+
+DEVOPS INFRA AS CODE
+======================
+INFRASTRUCTURE PROVISIONING
+	compute, db, storage and networking
+	Opensource neutral - Terraform
+	GCP service - Google Cloud Deployment Manager
+CONFIGURATION MANAGEMENT
+	Install right software and tools on provisioned resources
+	Open Source Tools - Chef, Puppet, Ansible and SaltStack
+
+
+OPERATIONS:
+===============
+MONITORING - METRICS AND ALERTS		CLOUD MONITORING
+CENTRALIZED LOGGING			CLOUD LOGGING
+AUDIT LOGGING				CLOUD AUDIT LOGS
+REAL-TIME EXCEPTION MONITORING		ERROR REPORTING
+LIVE DEBUGGING				CLOUD DEBUGGER
+DISTRUBITED TRACING			CLOUD TRACE
+STATISTICAL, LOW OVERHEAD PROFILER	CLOUD PROFILER
+
+
+
+SITE RELIABILTIY ENGINEERING (SRE)
+DevOps++ at oogle
+-focus on availability, latency, performance, efficience, change mgmt, monitoring, emergency response, and cpacity planning
+KEY PRICIPLES:
+	SERVICE LEVEL OBJECTIVES (SLO)
+	MINIMIZE TOIL
+	MOVE FAST BY REDUCING COST OF FAILURE
+	SHaRE OWNERSHIP WITH DEVELOPERS
+
+KPI:
+SLI - SERVICE LEVEL INDICATOR - Quantitative measure of an aspect of a service
+SLO - SERVICE LEVEL OBJECTIVE - SLI + target,   99.999% durability 99% percentile
+SLA - SERVICE LEVEL AGREEMENT - SLO + consequences (contract)
+	consequence of NOT meeting an SLO	
+	have stricter internal SLO than external SLO
+Error Budgets (100% - SLO)
+	How well is team meeting reliability objectives
+	Used to manage development velocity
+
+BEST PRACTICES:
+===============
+HANDLING EXCESS LOADS - 
+	Load Shedding - API Limits, Streaming Data
+	Reduced Quality of Service
+AVOIDING CASCADING FAILURES
+	Avoid Thrashing with Circuit Breaker or Reduced QoS
+PENETRATION TESTING (Ethical Hacking)
+	Simulate an atack with objective of finding security vulnerabilities
+	Should be authorized by project owners
+	No need to inform Google
+	Can be white box (hacker is provided with info about infra and app) or blackbox (no info)
+LOAD TESTING (Jmeter, LoadnRunner, Locust, Gatling etc)
+	Simulate real world traffic as closely as possible
+	Test for traffic spikes
+RESILIENCE TESTING - how well does it behave under stress
+RESLIIENCE - ability of system to provide acceptable behavior when one or more parts of system fail
+APPROACHES
+	Chaos Testing (Simian Army) cause one or more layers to fail - unlease a wild monkey
+	Add huge stress on one of the layers
+	Include network in your testing (VPN, cloud Interconnect etc..)
+	Best Practice: DiRT  - disaster recovery testing at Google
+
+
+SECTION 10:  MORE VM IN GCP
+=============================
+GCE  Create VMs
+	Virtualization
+	Hypervisor
+Specialized workloads  SAP HANA etc...
+
+GOOGLE CLOUD VMWARE ENGINE
+============================
+GCE provides virtualization
+VMWare provides virtualization soluions - VDI
+Google Cloud VMWare Engine:  Expand and Mirate (Lift and Shift) VMWare Infrastructure to Google Cloud
+	runs natively on CGP
+	continue using existing VMWare tools
+	No worry about Hardware and VMWare licenses
+	Simplified connection to other Google Cloud services
+
+
+MIGRATE FOR COMPUTE ENGINE
+=============================
+Migrate for compute Engine - Micrate VMs and VM storage to GCE
+	From VMware, Azure, EC2
+	Migrate one or thousands of VMs across datacenters and clouds
+
+IMPORTANT FEATURES:
+	Test migration before making the move
+	Migrate VMs in batches (or waves) using VM groups
+PHASEs:
+1. Planning migration waves
+(OPTIONAL) 2. Pre-migration testing using Test-clones
+3. Cutover to Cloud
+	Move VM to GCE
+	Migrate app storage to Google Cloud
+
+MIGRATE FOR ANTHOS AND GKE
+============================
+Modernize apps by moving from VMs to containers
+ Migrate for Anthos and GKE
+ Source GCE VM operating systems: Linux or windows
+ Supported Destination platforms
+	GKE
+	Anthos
+	Anthos clusters on VMware
+	Anthos clusers on AWS
+
+For VMs outside GCP, can be done in two steps:
+1. Migrate Ms to GCE with Migrate for Compute Engine
+2. Migrate GCE VMs to containers with Migrate for Anthos and GKE
+
+
+
+SECTION 9:  HYBRID CLOUD
+===========================
+Organization > Folder > Project > Resources
+	Resources created in Projects
+	Folders container multiple Projects ====ENVIRONMENTS
+	Organization contains multiple folders==========DEPARTMENTS
+	ONE PROJECT PER APPLICAtION PER ENVIRONMENT
+	ie  A1-DEV,  A1-PROD,  A2-DEV, A2-PROD
+
+
+BILLING ACCOUNTS
+Mandatory for creating resources in a project
+  contains the payment details
+  project with active resources associated with Billing Acct
+
+  associated with one or more projects
+
+Multiple billing accounts in organization
+
+TWO TYPES:
+Self Serve - Billed directly to Credit Card or BankAcct
+Invoiced - Generate Invoices
+
+MANAGING BILLING:  BUDGET, ALERTS AND EXPORTS
+Budget
+	Create Alerts
+	Default alert thresholds set at 50% 90% an 100%
+		Send alerts to Pub Sub
+		Billing admins and Billing Acct users are alerted by e-mail
+
+Billing Data can be exported (on a schedule) to
+	Big Query - want query info or visualize
+	Cloud Storage - for history/archiving
+
+===========================
+
+IAM BEST PRACTICES
+--------------------
+Principle of Least Privilege
+Separation of Duties
+Constant Monitoring - cloud audit logs and audit changes to IAM
+Use Groups when possible
+
+==============================
+CLOUD COMPUTING:  PUBLIC vs PRIVATE vs HYBRID CLOUDS
+Private Cloud
+Public Cloud
+Hybrid Cloud
+
+==============================
+CLOUD VPN- Connect on premises network to GCP Network
+   implemented using IPSec VPN Tunnel
+   thru public internet
+   encrypted using Internet Key Exchange protocol
+   Two types of Cloud VPN
+	HA VPN - BGP 99.99% dynamic routing
+	Classic VPN - support static routing (policy, routebased) and dynamic routing using BGP
+
+CLOUD INTERCONNECT - High Speed PHysical connection between on-prem and VPC networks
+    Dedicated Interconnect - 10Gbps or 100Gbps configs
+    Partner Interconnect - 50 Mbps to 10Gbps configs
+	
+    Data Exchange happens through private network
+	communicate using VPC network's internal IP addresses from on-prem network
+	reduces egress costs as public internet is not used
+    Supported Google API and services can be privately accessed from on-prem
+    Use only for high bandwidth needs - for low bandwidth, cloud VPN is recommended
+
+
+DIRECT PEERING - Connect customer network to google network using network peering
+	NOT a GCP Service
+	NOT RECOMMENDED:  to use Cloud Interconnect and Cloud VPN
+
+===========================================
+USER IDENTITY MGMT in GOOGLE CLOUD
+ - not recommended for enterprises
+1. Use Google Workspace
+2. Enterprise uses a ID of its own - by Federating Google Cloud with Identity Provider (ID)
+
+CORP DIRECTORY FEDERATION = Federate Cloud Identity or Google Workspace with exernal IdP liek AD or Azure AD
+  Enable SSO
+     using OpenID connect
+     SAML 
+     Google, Facebook, Twitter etc...
+
+=============================================
+ORGANIZATIONAL POLICY SERVICE
+  Centralized constraints on all resources
+	Configure Organizational Policy
+  Needs a Role - Organization Policy Administrator
+  IAm focuses on WHO?
+  Organization Policy focuses on WHAT
+
+==============================================
+RESOURCE HIERARCHY & IAM POLICY - can be set at any level of hierarhcy
+			Resources inherit policies of all parents
+                        Policy inhertance is transitie
+			Can't restrict policy at lower level if permission is given at a higher level
+
+==============================================
+
+
+
+SECTION 8  CLOUD IAM
+=====================
+Authentication
+Authorization
+Identities
+	GCP User
+	Group of CGP Users
+	App running GCP
+	App running on-prem
+	Unauthenticated Users
+Granular Control
+	Limit single user
+	  to perform single action
+	  on a specific cloud resource
+	  from a specific IP address
+	  during a specific time window
+
+Cloud IAM Example:
+1. Choose a Role
+2. Create Policy
+
+IAM Roles:
+roles are permissions
+Basic Roles (Primitive roles) - Owner/Editor/viewer
+Predefined Roles - Fine grained roles predefined and managed by Google
+	Storage Admin, Storage Object Admin, Storage Object Viewer, Storage Object Creator
+Custom Roles - when none are sufficient
+
+MEMBER is also called as PRINCIPAL or IDENTITY
+
+SERVICE ACCOUNTS:
+Default Service Account
+User Managed
+Google-managed service accounts
+
+SECTION 7 - DB IN GOOGLE CLOUD
+===============================
+Types of DB:  OLTP and OLAP, Documetn, Key Value, Graph, In Memory among others
+schema or schemaless
+
+Relational Databases: Predefined schema
+strong transactional capabilities
+
+Relational OLTP - large amount of small transactions:  ERP, CRM, e-commerce, banking
+  popular DB  MySql, Oracle, SQL Server
+Recommended Google Managed Services:
+   Cloud SQL:  Supports PostgreSQL, MySQL, and SQL Server for regional db (up to few TBs)
+   Cloud Spanner:   Unlimited Scale (multiple PB) 99.999% availability for global/horizontal scaling
+
+	
+cloudshell to initiate DB.   
+   xxx@cloudshell:~ (customprompt)$ gcloud sql connect my-first-cloud-sql-instance --user=root --quiet
+
+
+RELATIONAL DB- OLAP
+===================
+analyze petabytes of data
+BigQuery - Petabyte-scale distributed data ware house
+
+
+RELATIONAL DB - OLAP vs OLTP
+============================
+use similar datastructures, but different approach on how data is stored
+OLTP - uses Row Storage   - each table row is stored together
+OLAP uses columnar Storage 
+	High compression - store petabytes of data differently
+	Distribute Data - one table in multiple cluster nodes
+	Execute single query across multiple nodes - complex queries can be executed efficiently
+
+NoSQL Databases - flexible schema
+  trade off strong consistency and SQL features to achieve scalability and high-performance
+
+Google Managed Services:   
+    Cloud FireStore (Datastore)
+
+
+CLOUD FIRESTORE (DATASTORE) vs CLOUD BIGTABLE
+CLOUD DATASTORE - Managed Serverless NoSQl document Database	
+   Provides ACID transactions, SQL-like queries, indexes
+	designed for transactional mobile and web apps
+FIRESTORE (next version of Datastore) adds:
+	Strong consistency
+	Mobile and Web client libraries
+Recommended for small to medium databases (0 to a few Terabytes)
+
+CLOUD BIGTABLE - Managed, scalable NoSQL wide column database
+	NOT SERVERLESS (must create instances)
+	Recommended for data size > 10 TB to several PB
+	Recommended for large analytical and operational workloads
+	   NOT recommended for transactional workloads
+	  (Does NOT support multi row transactions - supports ONLY Single-row transactions)
+	
+OLDER PROJECTS ARE DATASTORE , but most should go to FireStore (Native mode)
+
+FIRESTORE creates indexes for everything
+
+
+IN-MEMORY DATABASES
+=====================
+Memory Store
+USE CASE:  Caching, session management, gaming leader boards, geospatial apps
+
+
+Relational OLTP DB
+	Cloud SQL
+	Cloud Spanner
+Relational OLAP DB		columnar storage with predefined schema, DataWarehousing and BigData Workloads
+	BigQuery
+NoSQL DBs
+	Cloud Firestore (Datastore) schemaless Serverles transactional up to few TB)
+	Cloud BigTable - Large DB (10TB - PB), Streaming (IOT), analytical & oeprational workloads,NOT SERVERLESS
+In Memory databases/caches
+	Cloud Memorystore	apps needing microsecond responses
+
+
+Startup with quickly evolving schema (table structure) 		Cloud Datastore/Firestore
+Non relational db with less storage 10GB			Cloud Datastore
+Transactional global DB with predefined schema processing
+    millions trans per second					Cloud Spanner
+Transactional local dB processing thousands trans per second	Cloud SQL
+Cache data (from db) for web app				MemoryStore
+DB for analytics processing of PB of data			BigQuery
+DB for storing huge volumes stream data from IOT devices	BigTable
+DB for storing huge streams of time series data			BigTable
+
+
+SECTION 6 - BLOCK FILE AND OBJECT STORAGE
+===========================================
+BLOCK STORAGE - HDD   one block storage device connected to one virtual server unless read only
+	Persistent Disks:  Network Block Storage
+		Zonal
+		Regional
+	Local SSD:  local Block Storage
+FILE STORAGE:
+DAS - Direct attached storage similar to HDD
+SAN - Storage Area network (Hi speed network connecting a pool of storage devices)
+
+	FILESTORE - High Performance File storage
+
+CLOUD STORAGE: Most popular, very flexiable & inexpensive
+		Serverless
+		key value approach
+		Provide REST API to access and modify objects, also CLI and SDK access
+		Store all file types: text, binary, backup & archives
+
+CLOUD STORAGE - STORAGE CLASSES - COMPARISON
+Standard			none		> 99.99% in multi region and dual	Frequent
+							region, 99.99 in regions
+Nearline Storage		30 days		99.95% in multi region and dual		one month/average
+							region, 99.99 in regions
+Coldline Storage		90 days			""				once quarter/average
+Archive Storage			365 days		""				Less than once/year
+
+OBJECT LIFECYCLE MANAGEMENT
+Two kinds of actions:
+SetStorageClass
+Deletion
+Allowed Transitions:  - Standard or Mult-regional Or REgional to nearline or Coldline or Archive
+
+TRANSFERRING DATA FROM ON PREMISES TO CLOUD  
+most popularly to Google Cloud Storage
+	Online Transfer:  gsutil or API to transfer data - good for one time xfers
+	Storage Transfer Service: Recommended for large-scale (PB) online data xfers from private, or other clouds	
+		by schedule
+		incremental transfer (only changed objects)
+		Reliable and fault tolerant - continues from wehre it left off in case of errors
+	Storage Transfer Service vs gsutil
+		gsutil < 1TB from on-prem or another GCS bucket
+		Storage Transfer Services > 1TB
+			or from another cloud
+
+
+MIGRATING DATA WITH TRANSFER APPLIANCE
+Recommended if data size > 20 TB or transfer takes > 1 week
+Works like Snowcone - request appliance, load data, ship appliance back, Google uploads the data
+FAstcopy (Up to 40GBps) with AES Encryption
+
+
+SECTION 5 - GCE COMPUTE:
+APP ENGINE - end to end app management
+ Pay for resources provisoned
+  Auto load balancing and autoscaling
+  managed platform updates and application health monitoring
+  App Versioning
+  Traffic splitting
+
+COMPUTE ENGINE VS APP ENGINE
+Compute Engine:
+	IaaS
+	More Flexibility
+	More Responsibility
+App Engine:	
+	PaaS
+	Serverless
+	LESS Respponsibility
+	LESS Flexibility
+
+APP ENGINE ENVIRONMENTS:
+==========================
+Standard:  apps run in language specific sandboxes
+  V1:  Older
+  V2:  supports also Node.js, Ruby (newer versions)
+   Complete isolation from OS/disk
+   Supports scale down to Zero instances
+Flexible:  Application instances run with Docker containers    
+   Makes use of Compute Engine virtual machines
+   Support ANY runtime 
+   CANNOT Scale down to Zero instances
+
+
+SERVICE CATEGORIES:
+Deploy custom App in VM				IaaS
+Using Gmail					Saas
+Using App Engine to deploy your app		PaaS
+Customer responsible for OS updates when using PaaS  - FALSE
+In PaaS, customer can configure auto scaling needs   - TRUE
+Customer is complete responsible for Avail when using PaaS  - FALSE
+In PaaS, customer has access to VM Instances	- FALSE
+In PaaS, customer can install custom software   - FALSE
+PaaS services only offer Compute Services	- FALSE
+
+
+KUBERNETES:  Most popular open source container orchestration solution
+             Provides Cluster Management
+	     Auto Scaling
+	     Service Discovery
+	     Load Balancer
+	     Self Healing
+	     Zero Downtime Deployments
+
+GKE - Managed Kubernetes services
+	has Auto-Repair and Auto-Upgrde
+        Pod and Cluster Autoscaling
+        Cloud Logging and Cloud Monitoring
+        Container-optimized OS
+        Persistent disk and Local SSD
+
+1:  gcloud container cluster create OR use Cloud Console
+
+2:  Login to Cloud Shell
+3:  Connect to Kubernetes Cluster
+  $gcloud container clusters get-credentials my-cluster --zone us-central1-a --project solid-course-258105
+
+4: Deploy microservice to Kubernetes
+ $Kubectl create deployment hello-world-rest-api --image=in28min/hellow-world-rest-ape:0:0.1.RELEASE
+ $kubectl get deployment
+ $kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+ $kubectl get services --watch
+ $curl 35.184.204.214:8080/hello-world
+
+5: Increase number of instances of  your microservice
+ $kubectl scale deployment hello-world-rest-api --replicas=2
+
+6: Increase number of nodes in K8s Cluster:
+ $gcloud container clusters resize my-cluster --node-pool my-node-pool --num-nodes 5
+
+7:Setup auto scaling for your microservice
+ $kubectl autoscale deployment hello-world-rest-api --max=10 --cpu-percent=70
+
+8:Setup Auto Scaling for your Kubernetes cluster
+  gcloud container cluster update cluster-name --enable-autoscaling --min-nodes=1 --max-nodes=10
+
+9: delete service
+  $kubectl delete service hello-world-rest-api 
+
+10: delete deployment
+  $kubectl delete deployment hello-world-rest-api
+
+11. delete cluster
+  $gcloud container clusters delete my-cluster --zone us-central1-c
+
+==================
+CLOUD FUNCTIONS
+Execute some code when an event happens
+   file uploaded in Cloud Storage
+   error log written to Cloud Logging
+   message arrives to Cloud Pub/Sub
+Enter Cloud Functions
+   run code in response to events
+   pay only for what you use
+Time Bound
+Each execution runs in separate instance
+
+CLOUD RUN and CLOUD RUN FOR ANTHOS
+===================================
+CLOUD RUN - container to Production in Seconds
+  built on top of an open standard - Knative
+  Fully managed serverless platform for containerized apps
+	ZERO infrastructure management
+	Pay-per-use
+  Fully integrated end-to-end developer experience
+    No limitatoin in languages, binaries and dependencies
+    Easily portable bc of container architecture
+    Cloud Code, Cloud Build, Cloud Monitoring & Cloud Logging Integrations
+
+  ANTHOS - Run Kubernetes clusters anywhere
+     Cloud, Multi Cloud and On-premise
+  
+  CLOUD RUN FOR ANTHOS:  Deploy your workloads to Anthos clusters running on-premises or on Google Cloud
+
+SCENARIOS - GCP COMPUTE SERVICES
+======================================
+Create Virtual Machines				Compute Engine
+Create a group of similiar VMs?			Managed Instance Groups
+Distribute Load among VMs			Cloud Load Balancing
+Simply setting up your web app			App Engine
+Easiest way to run one container?		Google Cloud Run
+Orchestrate Containers?				GKE
+Build Serverless event driven functions?	Cloud Functions
+Centrally manage multi-cloud and on-prem K8S	Anthos
+
+
+SECTION 4 - MANAGED SERVICES
+
+IaaS - you configure app code at runtime, load balancing, autoscaling, upgrade/patching, availability, 
+
+PLATFORM AS A SERVICE (PAAS)
+FaaS - Functions instead of Apps
+CaaS  - Containers instead of Apps
+Databases
+applications
+
+MICROSERVICES
+Containers - Docker
+ Create docker images for each microservice
+ 
+Container Orchestration
+  auto scaling
+  service discovery
+  load balancer
+  self healing
+  zero downtime deployments
+
+
+SERVERLESS
+
+
+SaaS (SOFTWARE AS A SERVICE)
+Centrally hosted software
+Customer responsible for configuring the software
+
+
+SHARED RESPONSIBILITY MODEL
+  Security
+      Encryption at rest by default
+      IAM
+      KMS 
+Google cloud is always responsible for hardware, network, audit logging etc...
+
+
+GCP MANAGED SERVICES FOR COMPUTE
+=================================
+Compute Engine				IaaS
+GKE					CaaS
+App Engine				PaaS (CaaS, Serverless)
+Cloud Functions				FaaS, Serverless
+Cloud Run				CaaS (Serverless)
+
+
+SECTION 2 - GOOGLE CLOUD ENGINE
+COMPUTE ENGINE - FEATURES
+-Create and manage lifecycle of VM instances
+-Load balancing and auto scaling for multiple VM instances
+-attach storage (& network storage) to your VM instances
+-manage network connectivity and configuration for your VM instances
+
+Internal IP address		permenant internal IP address that does not change during lifetime of instance
+External or Ephermeral IP	changes when instance is intitiated
+Static IP address		permanent external IP address that can be attached to a VM
+
+
+INSTANCE TEMPLATES:
+VM instances and Managed INSTANCE GROUPS
+Image families (optional)
+DEMO - launch VM instances using instance templates
+
+REDUCE LAUNCH TIME WITH CUSTOM IMAGE
+Prefer using Custom Image to Startup Script
+
+Create Custom Image from Working VM
+then Stop the image first, then create the instance
+OR 
+Create it from instance template, rename it and change custom image
+
+SUSTAINED USE DISCOUNTS:
+Automatic Discounts for running VM Instances
+  applicable for GKE or Compute Engine
+  does not apply on certain machine types OR VMs created by App Engine flexible and Dataflow
+
+COMMITTED USE DISCOUNTS:
+ Predictable resource needs
+ Commit for 1 year or 3 years
+ Up to 70% discount based on machine type and GPUs
+ Applicable for GKE and Compute Engine
+ CANNOT Cancel committments
+
+PRE-EMPTIBLE VM
+Short-lived cheaper (up to 80%) compute instances
+Use Preempt VMs if fault tolerant, cost senstive, workload is NOT immediate, non immediate batch processing jobs
+
+RESTRICTIONS
+ Not always available
+ NO SLA and CANNOT be migrated to regular VMs
+ NO Automatic Restarts
+ Free Tier credits not applicable
+
+COMPUTE ENGINE - SOLE-TENANT NODES
+-Shared Tenancy (Default)
+  Single host machine can be instances from multiple customers
+-Sole-tenant Nodes: Virtual instances on hardware dedicated to one customer
+-Use Cases
+   Security and compliance requirements:  you want your VMs to be physically separated from those in other projects
+   high performance requirements:  group your VMs together
+   Licensing requirements
+
+Node Groups
+   Node Template
+	Type node
+	   Affinity Labels
+
+
+Google Pricing CAlculator
+
+CUSTOM MACHINE FEATURES
+
+INSTANCE GROUPS:
+	Managed
+	UnManaged
+
+Location
+	Zonal
+	Regional
+
+MANAGED INSTANCE GROUPS (MIG)
+Identical VMs created using an instance template
+ Detects app failures using health checks
+ Auto Scaling
+ Load Balancing
+ Multiple Zone
+ Version Release Mgmt
+    Rolling Updates
+
+
+GCP - CLOUD LOAD BALANCING
+Distribute Traffic across VM instances in one or more regions
+Managed Service
+  Highly Available
+  Auto Scales for huge loads
+  Load Balancers public or private
+   Type:
+     External HTTPS
+     Internal HTTPS
+     SSL Proxy
+     TCP Proxy
+     External Network TCP/UDP
+     Internal TCP/UDP
+
+RECAP:
+LOAD Balancer
+  Created Instance Template
+     Created Instance Group
+      Tied LB to instance group by Backend Service
+
+SECTION 2 - REGIONS AND ZONES
+================================
+REGIONS
+20+ regions around world
+  high availability
+  low latency
+  global footprint
+  adhere to gov regulations
+
+ZONES
+  HA in same region
+  each region has 3 or more zones
+  each zone has one or more discrete clusters: distince physical infra housed in DC
+  Zones connected via low latency links
+
+SECTION 1:  Getting Started
+200+ Services
+Cleanest cloud
+
+
+
+
+
+
+
+
+Serverless
+
+
+
+
+
+
+		
+
+
+
+
+	
+
+
+
+
+	
+ 
+
+

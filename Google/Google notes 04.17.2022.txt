@@ -1,0 +1,304 @@
+Migrate on-premise VMs to Google Cloud - Compute engine
+
+Cloud BigTable - consistent high-speed (sub-10ms latency), millions of request/sec
+
+Cloud Spanner - global, handled consistently, unlimited growth
+
+Dataflow - handles building data pipelines
+	 - Managed service
+	      scales with amount of data to be processed
+              based on Apache Beam
+
+IAM - can report on and maintain compliance on your entire Google Cloud Org
+
+Google Cloud Armor security policies enable you to allow or deny access 
+to your external HTTP(S) load balancer at the Google Cloud edge, 
+as close as possible to the source of incoming traffic. 
+This prevents unwelcome traffic from consuming resources or entering 
+your Virtual Private Cloud (VPC) networks.
+
+
+Security Command Center -Protect your production apps (at run time) from denial of service and common web attacks
+(OWASP Top 10) like XSS (cross-site scripting) and SQL injection
+
+Cloud Data Loss Prevention - Discover, classify, & mask sensitive data (like Credit Card numbers, SSNs, clear text
+passwords & Google Cloud credentials) Integrates with Cloud Storage, BigQuery, and Datastore
+Provides APIs that can be invoked from your applications
+
+Secret Manager - Manage your database passwords, your API keys securely
+
+KMS Create and manage cryptographic keys (symmetric and asymmetric). 
+Control their use in your applications and GCP Services
+
+Security Command Center - Security and risk management platform for Google Cloud.
+-  Gain centralized visibility and control
+-  Detect threats targeting your Google Cloud assets
+    Uncover threats targeting your resources using logs and powered by Google’s unique threat intelligence; use kernel-level instrumentation to identify potential compromises of containers.
+-  Fix misconfigurations and compliance violations
+    Identify security misconfigurations and compliance violations in your Google Cloud assets and resolve them by following actionable recommendations.
+
+Distributed app - redundancy, fas comm (< 10ms) between diff machines
+   Solution:  multiple regions, multiple zones per region
+
+Migrate for Anthos migrates to containers, and Migrate for Compute Engine migrates to VMs
+
+
+Cloud Code, Cloud Build, Cloud Monitoring & Cloud Logging Integrations
+Cloud Scheduler - NO CLOUD SCHEDULER
+Cloud Code -  REPO
+Cloud Build - BUILD AND DEPLOY
+Cloud Deployment Manager - NO CLOUD DEVELOPMENT MANAGER
+
+MAINTAIN CUSTOM IMAGES - COMPUTE ENGINE
+
+PROD ENV in COMPUTE ENGINE in TWO REGIONS
+  CREATE 2 PROJECTS FOR PROD (ONE FOR EACH REGION)
+
+SECURITY COMMAND CENTER - Asset Discovery and inventory
+  			- Threat Prevention
+			- Threat detection
+			
+Segment Cloud Resources by Team - One Project by Team
+
+All work on private hypervisor, want to move to cloud quick with min cost and max google services
+Migrate workloads to Google Compute Engine (GCE)
+
+Scales to zero - App Engine Scales to Zero Instances (Standard but not FLEXIBLE)
+	- Cloud Function scales to Zero (by definition)
+
+Cloud Function  - notify users when something happens
+		- performance DB sanitation and maint
+		- execute intensive tasks in cloud instead of app
+		- integrate with 3rd party services and APIs
+
+
+Cloud Interconnect ->Cloud Interconnect extends your on-premises network to Google's network 
+  through a highly available, low latency connection. 
+You can use Dedicated Interconnect to connect directly to Google 
+or use Partner Interconnect to connect to Google through a supported service provider.
+https://cloud.google.com/network-connectivity/docs/interconnect
+
+Direct Peering (edge)-  enables you to establish a direct peering connection b/t
+your business network and Google's edge network and exchange high-throughput cloud traffic. 
+This capability is available at any of more than 100 locations in 33 countries 
+around the world.
+
+Cloud VPN - Cloud VPN securely connects your peer network to your Virtual Private Cloud (VPC) 
+network through an IPsec VPN connection. Traffic traveling between the two networks 
+is encrypted by one VPN gateway and then decrypted by the other VPN gateway. 
+This action protects your data as it travels over the internet. 
+You can also connect two instances of Cloud VPN to each other.
+
+CloudRun - Serverless - What is a Google Cloud Run?
+Cloud Run is a managed compute platform that enables you to run containers 
+that are invocable via requests or events. Cloud Run is serverless
+
+
+Storage Transfer Service
+
+Migrate for Anthos
+
+BigQuery Data Transfer Service
+
+Transfer applicane - like snowcone, snowball, snowmobile
+
+***International standards for data security and privacy, supercede regional regulalations
+
+BigQuery ML - Learning models using Standard SQL and DW solutions
+
+***Org needs to ensure each depart segregated from each other
+Each dept has several environements: Dev, TEST, PROD 
+Best Strategy:  Create Cloud Identity domain per environment, and create project per dept in each domain
+
+cloud.google.com/billing/docs/concepts
+Create billing account per project and link ech project to diff billing account
+NO turn on committed use discount sharing, create commitment for contained usage
+
+SUPPORT:
+Premium Support - NOT A SUPPORT LEVEL
+Enhanced support 24 x7  coverage and most responsive
+Standard Support - NOT A SUPPORT LEVEL
+Basic Support - coverage and response for SOME customers
+SecureAuth protects critical apps meaning delays and extended downtime not an option
+
+Org process large amounts of data from online app that operates continuously
+Do not want ot provision infra or create clusters
+ -ComputeEngine with managed BigQuery
+
+Dataproc - Serverless?
+Dataflow - Serverless?
+Dataproc is a Google Cloud product with Data Science/ML service for Spark and Hadoop. 
+In comparison, Dataflow follows a batch and stream processing of data. 
+
+process large amounts of Data continously.   BigQuery - cloud IOS
+
+Want to be sure expenditures on clous service inline with budget
+  Resource labels -helps monitor so we can prevent overspending
+  payments profile - prevents overspending
+
+Messed up Committed Use Discount Purchase - Contact Trust and Security
+
+Cloud Spanner - dynamically Scale up/down transactional SQL
+VS
+BigQuery is a fully-managed, serverless data warehouse that enables scalable analysis 
+over petabytes of data. It is a Platform as a Service that supports querying using 
+ANSI SQL. It also has built-in machine learning capabilities.
+
+Cloud BigTable -Cloud Bigtable is a fully managed wide-column 
+and key-value NoSQL database service for large analytical and operational workloads 
+as part of the Google Cloud portfolio.
+
+
+
+Partner Interconnect
+     senstive data cannot be send over internet, processd in both locations
+
+vs Cloud VPN
+
+Tracking Google Cloud speding needs to stay as simple as possie
+Want to isolate workloads in dev from prod:
+   Put dev resources in their own project
+
+
+many teams, many projects, simply management of identity and access policies
+--Use folders to group each teams projects
+
+Host data on-prem, and set up Cloud Interconnect connection
+no charge for download of data.
+
+
+Configure single sign-on on Google domain prevents access from Google AD account or "terminates" it in Google
+
+Org needs to analyze data to gather insights, only want to pay for stroage and queries
+   Which data analytics warehouse?
+      CloudSQL object storage
+      Dataproc - no
+      CloudSpanner - no
+      BigQuery - no
+
+BEST PRACTICE:   Define your resource hierarchy with an organization node on top
+
+Minimize latency, securely access large volume of On-premise data - VPC between onprem and google resource
+
+Create a Cloud Identity domain per environment, and create a project per department in each domain
+
+
+https://cloud.google.com/compute/all-pricing
+200 CPU constant for 3 years, then spikes to 300 1/3 of time - Pay as you go
+
+
+BigQuery is a fully-managed, serverless data warehouse that enables scalable analysis 
+over petabytes of data. It is a Platform as a Service that supports querying using 
+ANSI SQL. It also has built-in machine learning capabilities
+
+https://cloud.google.com/resource-manager/docs/organization-policy/overview
+
+Cloud Scheduler is a fully managed enterprise-grade cron job scheduler. 
+It allows you to schedule virtually any job, including batch, big data jobs.
+
+What is BigQuery data Transfer?
+The BigQuery Data Transfer Service automates data movement into BigQuery on a scheduled,
+ managed basis. The BigQuery Data Transfer Service facilitates transfers from many data 
+sources, including data warehouses. Transfers can be recurring or occur once.
+
+
+Cloud Composer is a fully managed data workflow orchestration service that empowers you 
+to author, schedule, and monitor pipelines.
+ 
+Database Migration Service makes it easier for you to migrate your data to Google Cloud. 
+This service helps you lift and shift your MySQL, PostgreSQL, and SQL Server workloads 
+into Cloud SQL. In addition, you can lift and modernize your Oracle workloads 
+into Cloud SQL for PostgreSQL.
+
+Data Catalog is a fully managed, scalable metadata management service in Google Cloud's Data Analytics family of products.
+-Searching for insightful data:
+-Understanding data
+-Making data useful:
+
+Dataprep by Trifacta is an intelligent data service for visually exploring, cleaning, and preparing structured and unstructured data for analysis, reporting, 
+and machine learning.
+
+Cloud Function scales to Zero (by definition)
+
+Cloud Data Fusion by Google Cloud is the brand new, fully-managed data engineering product 
+within Google Cloud Platform. It will help users to efficiently 
+build and manage ETL/ELT data pipelines.
+
+Financial governance refers to the way a company collects, manages, monitors 
+and controls financial information. Financial governance includes how companies track financial transactions, manage performance and control data, compliance, operations, and disclosures.
+
+Migrate workloads to Compute engine.  minimal changes, using max amount of managed services
+
+Put development resources with their own project
+
+Compute Engine can be used to migrate VMs
+
+Looker is an enterprise platform for business intelligence, data applications, and embedded analytics. Looker helps you explore, share, and visualize your company's data 
+so that you can make better business decisions.
+
+Recommendations AI delivers highly personalized product recommendations at scale
+
+Document AI uses aI to unlock insights from documents
+
+Cloud Talent Solution uses AI with job search and talent acquisition capabilities
+
+AI Hub is a hosted repo of plug and play AI Components
+
+
+Cloud Profiler is a continuous profiling tool that is designed for applications running on Google Cloud:
+    It's a statistical, or sampling, profiler that has low overhead 
+    and is suitable for production environments.
+Profiling is a form of dynamic code analysis. 
+You capture characteristics of the application as it runs, 
+and then you use this information to identify how to make your application faster 
+and more efficient.
+Historically, profiling was performed only during application development. 
+This approach relied on the ability to develop load tests and benchmarks 
+that could accurately predict a production environment.
+Continuous profiling refers to profiling the application while it executes 
+in a production environment. This approach alleviates the need to develop 
+accurate predictive load tests and benchmarks for the production environment. 
+Research on continuous profiling has shown it is accurate and cost effective*.
+
+Cloud Debugger is a feature of Google Cloud that lets you inspect the state of a running application in real time, 
+without stopping or slowing it down.
+
+Cloud Trace is a distributed tracing system that collects latency data 
+from your applications and displays it in the Google Cloud Console. 
+
+Cloud Monitoring offers automatic out-of-the-box metric collection dashboards 
+for Google Cloud services. It also supports monitoring of hybrid and multicloud env 
+
+TensorFlow is a free and open-source software library for machine learning 
+and artificial intelligence. It can be used across a range of tasks 
+but has a particular focus on training and inference of deep neural networks. 
+
+AutoML enables developers with limited machine learning expertise to train high-quality models specific to their business needs. 
+
+Use Dataproc for data lake modernization, ETL, and secure data science, at planet scale, 
+fully integrated with Google Cloud, at a fraction of the cost.
+
+BigQuery is a fully-managed, serverless data warehouse that enables scalable analysis 
+over petabytes of data. It is a Platform as a Service that supports querying using 
+ANSI SQL. It also has built-in machine learning capabilities
+Operating continuously, Large Amounts of data
+
+DataFlow - Pipelines. Google Cloud Dataflow is a fully managed service 
+for executing Apache Beam pipelines within the Google Cloud Platform ecosystem.
+
+Secret Manager is a secure and convenient storage system for API keys, passwords, certificates, and other sensitive data. 
+
+
+Google Cloud Storage is a RESTful online file storage web service for storing and accessing data on Google Cloud Platform infrastructure.
+
+BeyondCorp is an implementation, by Google, of zero-trust computer security concepts creating a zero trust network.
+
+Google Private Access no external IPs
+ Connect to Google APIs and services using an endpoint in your VPC network. 
+   Google Cloud and on-premises resources don't need an external IP addresses.
+ Connect to regional Google APIs and services using an internal HTTP(S) load balancer 
+   in your VPC network. Google Cloud and on-premises resources don't need an external 
+   IP addresses.
+ Use this option to connect to Google APIs and services without giving your Google Cloud 
+   resources external IP addresses.
+
